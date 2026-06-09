@@ -1,0 +1,11 @@
+Jun  4 14:22:31 server sshd[12345]: Failed password for invalid user admin from 192.168.1.15 port 54321 ssh2
+Jun  4 14:23:10 server sshd[12346]: Failed password for root from 192.168.1.15 port 54322 ssh2
+Jun  4 14:24:02 server sshd[12347]: Accepted password for carlos from 192.168.1.20 port 54323 ssh2
+Jun  4 14:25:45 server sshd[12348]: Failed password for test from 10.0.0.5 port 49152 ssh2
+Jun  4 14:26:01 server sshd[12349]: Failed password for invalid user guest from 192.168.1.15 port 54324 ssh2
+Jun  4 14:26:45 server sshd[12350]: Failed password for invalid user oracle from 203.0.113.77 port 51244 ssh2
+Jun  4 14:27:11 server sshd[12351]: Failed password for admin from 203.0.113.77 port 51245 ssh2
+Jun  4 14:27:39 server sshd[12352]: Failed password for root from 203.0.113.77 port 51246 ssh2
+Jun  4 14:28:02 server sshd[12353]: Failed password for invalid user postgres from 203.0.113.77 port 51247 ssh2
+Jun  4 14:28:33 server sshd[12354]: Failed password for invalid user deploy from 203.0.113.77 port 51248 ssh2
+Jun  4 14:29:05 server sshd[12355]: Accepted password for carlos from 192.168.1.20 port 54325 ssh2
