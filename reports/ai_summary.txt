@@ -1,0 +1,43 @@
+1) What happened
+- There were 9 total failed login attempts to your environment.  
+- One IP address, 203.0.113.77, made 5 of those failures and is flagged as a possible brute‑force source.
+
+2) Why this activity is suspicious
+- Multiple failed attempts coming from a single IP is a common sign of automated password guessing (brute‑force).  
+- The attempts targeted high‑value account names (see below), which attackers often try first.  
+- Repeated failures increase the risk that a password could eventually be guessed or that the activity is a reconnaissance step before a more targeted attack.
+
+3) Which accounts were targeted
+- admin  
+- deploy  
+- oracle  
+- postgres  
+- root
+
+(Those are commonly privileged or service accounts, so they are attractive targets.)
+
+4) Recommended next investigation and mitigation steps (prioritized)
+- Immediate containment
+  - Temporarily block or rate‑limit 203.0.113.77 at the firewall or host level (or add to fail2ban rules). If unsure about service impact, apply a temporary rate limit first.
+  - Preserve logs (auth, syslog, application logs) for all affected hosts for at least the organization’s retention policy for investigations.
+
+- Check for successful compromise
+  - Search logs for any successful logins from 203.0.113.77 and for any successful logins around the same timeframe from other IPs.  
+  - Review sudo/shell history and recent privilege escalations on targeted systems.  
+  - Check for new/modified accounts, authorized_keys, cron jobs, and suspicious processes or binaries.
+
+- Broader log review and correlation
+  - Identify the source of the other 4 failed attempts (other IPs) and look for patterns (timing, username lists, tools signatures).  
+  - Correlate with IDS/IPS, firewall, VPN and cloud provider logs for related activity from that IP or related ranges.
+
+- Hardening / remediation
+  - Ensure password complexity and lockout policies are enforced; consider stricter account lockout thresholds.  
+  - Disable password authentication for SSH where possible and use key‑based auth; enable MFA for administrative access.  
+  - Rotate credentials for any accounts that may have been exposed or are using weak/default passwords, especially if there is any sign of successful authentication.  
+  - Whitelist/blacklist and reputation: check the IP’s reputation in threat‑intel feeds before long‑term blocking; block if confirmed malicious.
+
+- Ongoing monitoring and alerting
+  - Create or tune alerts for repeated failed logins (especially to privileged accounts) and for multiple attempts from a single IP.  
+  - Consider automated mitigation (fail2ban, adaptive firewall rules) to slow/stop brute‑force attempts.
+
+If you want, I can draft the exact commands/log queries to search your auth logs (syslog/secure/ssh) or sample firewall rules to block the IP.
