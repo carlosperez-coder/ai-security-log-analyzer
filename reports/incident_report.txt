@@ -1,0 +1,18 @@
+Security Incident Report
+========================
+
+Total failed login attempts: 9
+Suspicious IPs detected: 1
+
+Suspicious Activity Details
+===========================
+
+Suspicious IP: 203.0.113.77
+Failed attempts: 5
+Targeted users: admin, deploy, oracle, postgres, root/nThreat type: Possible brute-force attack
+Recommended next steps:
+- Review authentication logs for successful logins from this IP.
+- Check whether any targeted accounts were compromised.
+- Consider blocking the IP if activity is unauthorized.
+- Continue monitoring for repeated failed login attempts.
+
